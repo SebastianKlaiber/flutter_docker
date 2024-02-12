@@ -11,9 +11,10 @@ WORKDIR /home/circleci
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
 
+RUN brew install dart-sdk
+
 # Install fvm
-RUN brew tap leoafarias/fvm
-RUN brew install fvm
+RUN dart pub global activate fvm
 
 # Install melos dart package
 RUN dart pub global activate melos
@@ -22,6 +23,9 @@ RUN dart pub global activate melos
 RUN dart pub global activate junitreport
 
 ENV PATH="/home/circleci/.pub-cache/bin:$PATH"
+ENV PATH="$HOME/fvm/default/bin:$PATH"
+
+RUN echo "flutter=fvm flutter" >> ~/.bashrc
 
 # Install fastlane
 RUN sudo gem install fastlane -NV
