@@ -3,7 +3,7 @@ FROM cimg/android:2024.01.1-node
 USER circleci
 
 RUN sudo apt update
-RUN sudo apt install -y sqlite3 libsqlite3-dev
+RUN sudo apt install -y sqlite3 libsqlite3-dev cmake ninja-build
 RUN sudo apt-get update
 
 WORKDIR /home/circleci
