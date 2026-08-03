@@ -1,4 +1,4 @@
-FROM cimg/android:2025.02.1-node
+FROM cimg/android:2026.08.1-node
 
 USER circleci
 
